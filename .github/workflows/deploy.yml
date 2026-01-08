@@ -28,4 +28,4 @@ jobs:
         run: |
           # 如果你的网页在根目录，路径填 . 
           # 如果在 build 文件夹，路径填 ./build
-          pinme upload ./qingdao_taobao_orc 
+          pinme upload ./dist
