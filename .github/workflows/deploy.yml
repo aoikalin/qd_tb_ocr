@@ -19,7 +19,7 @@ jobs:
           node-version: '20'
 
       - name: 安装 PinMe CLI
-        run: npm install -g @glitternetwork/pinme
+        run: npm install -g pinme
 
       - name: 上传至 PinMe
         env:
