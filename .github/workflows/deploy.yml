@@ -1,0 +1,31 @@
+name: PinMe Auto Deploy
+
+# 触发条件：当 main 分支有代码推送时执行
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 安装 PinMe CLI
+        run: npm install -g @glitternetwork/pinme
+
+      - name: 上传至 PinMe
+        env:
+          # 调用之前设置的 Secret
+          PINME_APPKEY: ${{ secrets.PINME_APPKEY }}
+        run: |
+          # 如果你的网页在根目录，路径填 . 
+          # 如果在 build 文件夹，路径填 ./build
+          pinme upload ./qingdao_taobao_orc 
